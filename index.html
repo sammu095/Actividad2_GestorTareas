@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicación sencilla para organizar tareas personales.">
+  <title>Gestor de Tareas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="contenedor">
+
+    <header class="encabezado">
+      <p class="etiqueta">ORGANIZA TU DÍA</p>
+      <h1>Gestor de tareas</h1>
+      <p class="subtitulo">Anota lo que necesitas hacer y avanza paso a paso.</p>
+    </header>
+
+    <!-- AUTENTICACIÓN -->
+    <section id="panel-autenticacion" class="panel">
+      <h2>Bienvenido</h2>
+      <p>Inicia sesión o crea una cuenta para administrar tus tareas.</p>
+
+      <!-- INICIO DE SESIÓN -->
+      <form id="formulario-login" class="formulario">
+        <h3>Iniciar sesión</h3>
+
+        <label for="login-correo">Correo electrónico</label>
+        <input
+          type="email"
+          id="login-correo"
+          placeholder="tucorreo@ejemplo.com"
+          required
+        >
+
+        <label for="login-password">Contraseña</label>
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Tu contraseña"
+          required
+        >
+
+        <button type="submit" class="boton boton-principal">
+          Iniciar sesión
+        </button>
+      </form>
+
+      <hr>
+
+      <!-- REGISTRO -->
+      <form id="formulario-registro" class="formulario">
+        <h3>Crear una cuenta</h3>
+
+        <label for="registro-nombre">Nombre</label>
+        <input
+          type="text"
+          id="registro-nombre"
+          placeholder="Tu nombre"
+          required
+        >
+
+        <label for="registro-correo">Correo electrónico</label>
+        <input
+          type="email"
+          id="registro-correo"
+          placeholder="tucorreo@ejemplo.com"
+          required
+        >
+
+        <label for="registro-password">Contraseña</label>
+        <input
+          type="password"
+          id="registro-password"
+          placeholder="Crea una contraseña"
+          minlength="6"
+          required
+        >
+
+        <button type="submit" class="boton boton-principal">
+          Registrarme
+        </button>
+      </form>
+
+      <p id="mensaje-auth" class="mensaje" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- SESIÓN ACTIVA -->
+    <div id="panel-usuario" class="panel" hidden>
+      <span id="usuario-activo"></span>
+      <button type="button" id="cerrar-sesion" class="boton boton-secundario">
+        Cerrar sesión
+      </button>
+    </div>
+
+    <!-- GESTOR DE TAREAS -->
+    <section id="panel-tareas" class="panel" aria-labelledby="titulo-lista" hidden>
+      <h2 id="titulo-lista">Mis tareas</h2>
+
+      <form id="formulario-tarea" class="formulario">
+        <label for="nueva-tarea">Nueva tarea</label>
+
+        <div class="fila-entrada">
+          <input
+            type="text"
+            id="nueva-tarea"
+            name="nueva-tarea"
+            maxlength="120"
+            placeholder="Ej. Terminar actividad de Full Stack"
+            autocomplete="off"
+            required
+          >
+
+          <button type="submit" class="boton boton-principal">
+            Agregar tarea
+          </button>
+        </div>
+
+        <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="resumen" aria-live="polite">
+        <span id="contador">0 tareas</span>
+        <button type="button" id="limpiar-completadas" class="boton-enlace">
+          Limpiar completadas
+        </button>
+      </div>
+
+      <ul id="lista-tareas" class="lista-tareas" aria-label="Lista de tareas"></ul>
+
+      <p id="lista-vacia" class="lista-vacia">
+        Todavía no tienes tareas. ¡Agrega la primera!
+      </p>
+    </section>
+
+    <footer class="pie">
+      <p>Proyecto académico · JavaScript ES6+ y programación orientada a objetos</p>
+    </footer>
+
+  </main>
+</body>
+</html>
